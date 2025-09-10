@@ -1,25 +1,33 @@
-#include<stdio.h>
-int main() {
-    int n, i, count = 0;
+#include <stdio.h>
 
-    printf("Enter a number: ");
+int main() {
+    int n, i, num, found = 0;
+
+    printf("Enter number of elements: ");
     scanf("%d", &n);
 
-    if (n <= 1) {
-        printf("%d is NOT a prime number.\n", n);
+    int arr[n];
+
+    printf("Enter %d elements:\n", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
 
-    for (i = 1; i <= n; i++) {
-        if (n % i == 0) {
-            count++;
+    printf("Enter element to search: ");
+    scanf("%d", &num);
+
+    for(i = 0; i < n; i++) {
+        if(arr[i] == num) {
+            printf("Element %d found at position %d\n", num, i+1);
+            found = 1;
+            break;
         }
     }
 
-    if (count == 2) {
-        printf("%d is a PRIME number.\n", n);
-    } else {
-        printf("%d is NOT a prime number.\n", n);
+    if(found == 0) {
+        printf("Element %d not found in the array\n", num);
     }
 
     return 0;
 }
+

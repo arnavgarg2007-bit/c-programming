@@ -1,24 +1,28 @@
 #include<stdio.h>
 int main()
 {
-    int n,a=0,b=1,c=0;
-    printf("Enter a number:");
-    scanf("%d",&n);
-    while(c<n)
-    {
-    c=a+b;
-    a=b;
-    b=c;
+    int n, i, j, count = 0;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    printf("Enter %d elements:\n", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
 
-    if(c==n)
-    printf("%d is in the Fibonacci series.\n",n);
-    else
-    printf("%d is not in the Fibonacci series.\n",n);
+    for(i = 0; i < n; i++) {
+        for(j = i + 1; j < n; j++) {
+            if(arr[i] == arr[j]) {
+                count++;
+                break;   
+            }
+        }
+    }
+
+    printf("Total number of duplicate elements = %d\n", count);
+
     return 0;
-
 }
-
-
-
-
