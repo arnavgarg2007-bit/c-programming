@@ -11,12 +11,12 @@ int main() {
     }
 
     for(i = 0; i < 3; i++) {
-        for(j = i; j < 3; j++) {   
+        for(j = 0; j <= i; j++) {   
             sum += a[i][j];
         }
     }
 
-    printf("Sum of upper triangular elements = %d\n", sum);
+    printf("Sum of lower triangular elements = %d\n", sum);
 
     return 0;
 }
