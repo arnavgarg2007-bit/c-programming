@@ -1,28 +1,31 @@
 #include <stdio.h>
-
 int main() {
-    int n;
-    printf("Enter the size of the square matrix: ");
-    scanf("%d", &n);
+    int a[3][3], i, j, rowSum, colSum;
 
-    int a[n][n];
-    printf("Enter the elements of the matrix:\n");
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) {
+    printf("Enter elements of 3x3 matrix:\n");
+    for(i = 0; i < 3; i++) {
+        for(j = 0; j < 3; j++) {
             scanf("%d", &a[i][j]);
         }
     }
 
-    int sum = 0;
-    int product = 1;
-
-    for(int i = 0; i < n; i++) {
-        sum += a[i][n - 1 - i];
-        product *= a[i][n - 1 - i];
+    printf("\nSum of each row:\n");
+    for(i = 0; i < 3; i++) {
+        rowSum = 0;
+        for(j = 0; j < 3; j++) {
+            rowSum += a[i][j];
+        }
+        printf("Row %d = %d\n", i+1, rowSum);
     }
 
-    printf("Sum of anti-diagonal elements = %d\n", sum);
-    printf("Product of anti-diagonal elements = %d\n", product);
+    printf("\nSum of each column:\n");
+    for(j = 0; j < 3; j++) {
+        colSum = 0;
+        for(i = 0; i < 3; i++) {
+            colSum += a[i][j];
+        }
+        printf("Column %d = %d\n", j+1, colSum);
+    }
 
     return 0;
 }

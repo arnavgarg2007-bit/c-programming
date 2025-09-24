@@ -1,22 +1,13 @@
 #include <stdio.h>
-
 int main() {
-    int a[3][3], i, j, sum = 0;
-
-    printf("Enter elements of 3x3 matrix:\n");
-    for(i = 0; i < 3; i++) {
-        for(j = 0; j < 3; j++) {
-            scanf("%d", &a[i][j]);
-        }
+    char str[200];
+    int i, words = 1;
+    printf("Enter a string: ");
+    gets(str);
+    for(i = 0; str[i] != '\0'; i++) {
+        if(str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
+            words++;
     }
-
-    for(i = 0; i < 3; i++) {
-        for(j = i; j < 3; j++) {   
-            sum += a[i][j];
-        }
-    }
-
-    printf("Sum of upper triangular elements = %d\n", sum);
-
+    printf("Total words = %d\n", words);
     return 0;
 }

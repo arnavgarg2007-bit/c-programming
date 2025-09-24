@@ -1,33 +1,13 @@
 #include <stdio.h>
-
 int main() {
-    int n, i, num, found = 0;
-
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-
-    int arr[n];
-
-    printf("Enter %d elements:\n", n);
-    for(i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
+    char str[200];
+    int i;
+    printf("Enter a string: ");
+    gets(str);
+    for(i = 0; str[i] != '\0'; i++) {
+        if(islower(str[i])) str[i] = toupper(str[i]);
+        else if(isupper(str[i])) str[i] = tolower(str[i]);
     }
-
-    printf("Enter element to search: ");
-    scanf("%d", &num);
-
-    for(i = 0; i < n; i++) {
-        if(arr[i] == num) {
-            printf("Element %d found at position %d\n", num, i+1);
-            found = 1;
-            break;
-        }
-    }
-
-    if(found == 0) {
-        printf("Element %d not found in the array\n", num);
-    }
-
+    printf("Modified string: %s\n", str);
     return 0;
 }
-
