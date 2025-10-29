@@ -4,7 +4,7 @@ int main() {
     FILE *fp;
     char filename[50];
     char ch;
-    int count = 0;
+    int words = 0, characters = 0, inWord = 0;
 
     printf("Enter file name: ");
     scanf("%s", filename);
@@ -17,13 +17,20 @@ int main() {
     }
 
     while ((ch = fgetc(fp)) != EOF) {
-        if (ch == '\n')
-            count++;
+        characters++;
+
+        if (isspace(ch))
+            inWord = 0;
+        else if (inWord == 0) {
+            inWord = 1;
+            words++;
+        }
     }
 
     fclose(fp);
 
-    printf("Number of lines in the file: %d\n", count + 1);
+    printf("Number of characters: %d\n", characters);
+    printf("Number of words: %d\n", words);
 
     return 0;
 }

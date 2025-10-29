@@ -1,31 +1,28 @@
 #include <stdio.h>
+
 int main() {
-    int a[3][3], i, j, rowSum, colSum;
+    FILE *fp;
+    char name[50];
+    long size;
 
-    printf("Enter elements of 3x3 matrix:\n");
-    for(i = 0; i < 3; i++) {
-        for(j = 0; j < 3; j++) {
-            scanf("%d", &a[i][j]);
-        }
+    printf("Enter file name: ");
+    scanf("%s", name);
+
+    fp = fopen(name, "r");
+
+    if (fp == NULL) {
+        printf("File does not exist.\n");
+        return 0;
     }
 
-    printf("\nSum of each row:\n");
-    for(i = 0; i < 3; i++) {
-        rowSum = 0;
-        for(j = 0; j < 3; j++) {
-            rowSum += a[i][j];
-        }
-        printf("Row %d = %d\n", i+1, rowSum);
-    }
+    fseek(fp, 0, SEEK_END);
+    size = ftell(fp);
 
-    printf("\nSum of each column:\n");
-    for(j = 0; j < 3; j++) {
-        colSum = 0;
-        for(i = 0; i < 3; i++) {
-            colSum += a[i][j];
-        }
-        printf("Column %d = %d\n", j+1, colSum);
-    }
+    if (size == 0)
+        printf("File is empty.\n");
+    else
+        printf("File has some text.\n");
 
+    fclose(fp);
     return 0;
 }
